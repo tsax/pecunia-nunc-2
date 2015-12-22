@@ -5,7 +5,7 @@ gem 'rails', '4.2.5'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
-
+gem 'bootstrap_form'
 gem 'jquery-rails'
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -21,6 +21,8 @@ group :development, :test do
   gem 'sqlite3'
   gem 'rspec-rails', '~> 3.4'
   gem 'capybara', '>=2.2.0'
+  gem 'guard-rspec'
+  gem 'spork'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 end
