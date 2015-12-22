@@ -4,9 +4,7 @@ class SubscribersController < ApplicationController
   end
 
   def create
-    puts params[:subscriber]
     @subscriber = Subscriber.new(user_params)
-
     if @subscriber.save
       flash[:success] = "Thanks for signing up! Please confirm your email address by confirming the email sent to your inbox shortly!"
     else
@@ -17,9 +15,9 @@ class SubscribersController < ApplicationController
   private 
 
   def user_params
-    params.require(:subscriber).permit(:name, :allcategories, :art, :comics, :crafts, 
-                                       :dance, :design, :fashion, :filmvideo, :food, 
-                                       :games, :journalism, :music, :photography, 
+    params.require(:subscriber).permit(:name, :email, :allcategories, :art, :comics, 
+                                       :crafts, :dance, :design, :fashion, :filmvideo,
+                                       :food, :games, :journalism, :music, :photography, 
                                        :publishing, :technology,:theater)
   end
 end
