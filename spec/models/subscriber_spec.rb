@@ -1,5 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Subscriber, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "initialization" do
+    let(:subscriber) { Subscriber.new }
+  end
 end

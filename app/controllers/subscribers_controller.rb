@@ -18,6 +18,6 @@ class SubscribersController < ApplicationController
     params.require(:subscriber).permit(:name, :email, :allcategories, :art, :comics, 
                                        :crafts, :dance, :design, :fashion, :filmvideo,
                                        :food, :games, :journalism, :music, :photography, 
-                                       :publishing, :technology,:theater)
+                                       :publishing, :technology, :theater)
   end
 end
