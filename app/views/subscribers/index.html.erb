@@ -83,41 +83,38 @@
           </div>
 
         </div>
+      <% 100.times do |i| %>
         <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
+      <% end %>
       <div id="examples">
         <p>HAHAHAHAH</p>
+      </div>
+
+      <div id="signup">
+        <%= bootstrap_form_for @subscriber do |f| %>
+          <%= f.text_field :name, icon: "user", placeholder: 'Name', class: 'input-large' %>
+          <%= f.text_field :email, icon: "envelope", placeholder: 'Email', class: 'input-large' %>
+          <%= f.check_box :allcategories, label: 'All Categories' %>
+          <%= f.check_box :art %>
+          <%= f.check_box :comics %>
+          <%= f.check_box :crafts %>
+          <%= f.check_box :dance %>
+          <%= f.check_box :design %>
+          <%= f.check_box :fashion %>
+          <%= f.check_box :filmvideo, label: 'Film & Video'%>
+          <%= f.check_box :food %>
+          <%= f.check_box :games %>
+          <%= f.check_box :journalism %>
+          <%= f.check_box :music %>
+          <%= f.check_box :photography %>
+          <%= f.check_box :publishing %>
+          <%= f.check_box :technology %>
+          <%= f.check_box :theater %>
+          <%= f.submit "Subscribe!", class: 'btn btn-large'%>
+        <% end %>
+        <% 10.times do |i| %>
+        <br />
+        <% end %>
       </div>
     </div>
 
