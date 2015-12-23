@@ -55,7 +55,7 @@ body {
 
 /* Padding for spacing */
 .inner {
-  padding: 30px;
+  padding: 10px;
 }
 
 #intro {
@@ -112,7 +112,7 @@ body {
  */
 
 .cover {
-  padding: 0 20px;
+  padding: 0 50px;
 }
 .cover .btn-lg {
   padding: 10px 20px;
@@ -141,7 +141,7 @@ body {
     top: 0;
   }
   .mastfoot {
-    // position: fixed;
+    position: fixed;
     bottom: 0;
   }
   /* Start the vertical centering */
