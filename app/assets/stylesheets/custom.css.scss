@@ -63,8 +63,19 @@ body {
 }
 
 #signup {
-    width: 40%;
-    horizontal: center;
+    width: 50%;
+    margin-left: 30%;
+    alignment: center;
+    .btn {
+        color: white;
+        width: 50%;
+    }
+}
+
+.checkboxes {
+    width: 12em;
+    float: left;
+    text-align: left;
 }
 /*
  * Header
