@@ -6,16 +6,9 @@ RSpec.feature "Home page visit", type: :feature do
     expect(page).to have_text "Pecunia Nunc"
   end
 
-  scenario "User subscribes" do
-    visit root_path
-    fill_in "Name", with: "Tushar S"
-    page.check "All Categories"
-    click_button "Subscribe!"
-    expect(page).to have_text "Thanks for subscribing!"
-  end
-
   describe "When user subscribes" do
     before(:all) do
+      ActionMailer::Base.deliveries.clear
       visit root_path
       fill_in "Name", with: "Dummy"
       fill_in "Email", with: "dummy@dummy.com"

@@ -23,6 +23,6 @@ class SubscribersController < ApplicationController
   end
 
   def send_user_confirmation(subscriber)
-    SubscriberMailer.email_confirmation(subscriber).deliver
+    SubscriberMailer.email_confirmation(subscriber).deliver_now
   end
 end
