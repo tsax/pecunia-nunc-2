@@ -15,7 +15,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bootstrap-sass', '~> 3.3.6'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
+gem 'open_uri_redirections'
+gem 'kickstarter', :git => 'https://github.com/tsax/kickstarter.git', :branch => 'project-category'
 
 group :development, :test do
   gem 'sqlite3'
