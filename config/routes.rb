@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
   root 'subscribers#index'
+  get 'subscribers/confirm' => 'subscribers#confirm'
   resources :subscribers
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

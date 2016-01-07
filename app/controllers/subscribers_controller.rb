@@ -13,6 +13,20 @@ class SubscribersController < ApplicationController
     end
   end
 
+  def confirm
+    @subscriber = Subscriber.find_by_token(params[:token])
+    unless @subscriber.nil?
+      @subscriber.active = true
+      if @subscriber.save
+        @message = "Thanks! Your e-mail address has been confirmed!"
+      else
+        @message = "Sorry, there was an error"
+      end
+    else
+      @message = "Sorry, your account could not be found"
+    end
+  end
+
   private 
 
   def user_params
