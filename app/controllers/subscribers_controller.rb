@@ -27,6 +27,21 @@ class SubscribersController < ApplicationController
     end
   end
 
+  def unsubscribe
+    @subscriber = Subscriber.find_by_token(params[:token])
+    unless @subscriber.nil?
+      @subscriber.active = false
+      if @subscriber.save
+        @message = "Sorry to see you go! You've been unsubscribed" 
+      else
+        @message = "Sorry there was an error"
+      end
+    else
+      @message = "Sorry, your account could not be found"
+    end
+  end
+  
+
   private 
 
   def user_params

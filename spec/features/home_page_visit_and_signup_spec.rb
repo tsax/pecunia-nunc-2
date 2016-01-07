@@ -25,15 +25,22 @@ RSpec.feature "Home page visit", type: :feature do
     end
   end
 
-  describe "When user confirms email" do
+  describe "Subscribing and unsubscribing" do
     before(:all) do
       @subscriber = Subscriber.new(name: "hehe", email: "dd@dummy.com", allcategories: true)
       @subscriber.token = Digest::SHA1.hexdigest([Time.now, rand].join)
       @subscriber.save
     end
-    scenario "clicks the confirmation link" do
+    
+    scenario "User clicks the confirmation link" do
       visit "/subscribers/confirm?token=#{@subscriber.token}"
       expect(page).to have_text "Thanks! Your e-mail address has been confirmed!"
     end
+
+    scenario "User clicks the unsubscribe link" do
+      visit "/subscribers/unsubscribe?token=#{@subscriber.token}"
+      expect(page).to have_text "Sorry to see you go! You've been unsubscribed"
+    end
+
   end
 end

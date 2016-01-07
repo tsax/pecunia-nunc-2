@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   # root 'welcome#index'
   root 'subscribers#index'
   get 'subscribers/confirm' => 'subscribers#confirm'
+  get 'subscribers/unsubscribe' => 'subscribers#unsubscribe'
   resources :subscribers
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
