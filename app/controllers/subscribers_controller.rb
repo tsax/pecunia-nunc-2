@@ -20,10 +20,10 @@ class SubscribersController < ApplicationController
       if @subscriber.save
         @message = "Thanks! Your e-mail address has been confirmed!"
       else
-        @message = "Sorry, there was an error"
+        @message = error_message
       end
     else
-      @message = "Sorry, your account could not be found"
+      @message = account_not_found
     end
   end
 
@@ -34,10 +34,10 @@ class SubscribersController < ApplicationController
       if @subscriber.save
         @message = "Sorry to see you go! You've been unsubscribed" 
       else
-        @message = "Sorry there was an error"
+        @message = error_message
       end
     else
-      @message = "Sorry, your account could not be found"
+      @message = account_not_found
     end
   end
   
@@ -53,5 +53,13 @@ class SubscribersController < ApplicationController
 
   def send_user_confirmation(subscriber)
     SubscriberMailer.email_confirmation(subscriber).deliver_now
+  end
+
+  def error_message
+    "Sorry, there was an error"
+  end
+
+  def account_not_found
+    "Sorry, your account could not be found"
   end
 end
