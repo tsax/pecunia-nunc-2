@@ -22,7 +22,7 @@ class UserToProjectsMapper
   def get_category_matched_projects_for_user user
     categories = user_categories(user)
     projects = get_projects
-    projects.select { |p| project_in_users_category?(user_categories, p) }
+    projects.select { |p| project_in_users_category?(categories, p) }
   end 
 
   def project_in_users_category? categories, project

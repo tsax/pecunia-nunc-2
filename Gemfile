@@ -21,6 +21,7 @@ gem 'kickstarter', :git => 'https://github.com/tsax/kickstarter.git', :branch =>
 group :development, :test do
   gem 'sqlite3'
   gem 'rspec-rails', '~> 3.4'
+  gem 'rspec-activemodel-mocks', '1.0.3'
   gem 'capybara', '>=2.2.0'
   gem 'guard-rspec'
   gem 'spork'
