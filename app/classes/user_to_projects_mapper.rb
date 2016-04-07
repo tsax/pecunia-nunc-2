@@ -1,8 +1,7 @@
-class ProjectToCategoryMapper
+class UserToProjectsMapper
 
   def everything
     users = get_users
-    projects = get_projects
 
     users.each { |u| send_listing_to_user(u) }
   end
@@ -16,17 +15,17 @@ class ProjectToCategoryMapper
     Subscriber.all
   end
 
-  def get_category_matched_projects_for_user user
-    get_projects.select    { |p| match_category(user, p) }
-  end 
-
   def get_projects
-    retriever = ProjectRetriever.new
-    retriever.get_all_unfunded_projects_ending_soon
+    ProjectRetriever.get_all_unfunded_projects_ending_soon
   end
 
-  def match_category user, project
+  def get_category_matched_projects_for_user user
     categories = user_categories(user)
+    projects = get_projects
+    projects.select { |p| project_in_users_category?(user_categories, p) }
+  end 
+
+  def project_in_users_category? categories, project
     if categories.include? 'All'
       return true 
     else 
