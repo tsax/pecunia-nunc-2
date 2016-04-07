@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+ruby '2.2.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
 gem 'sass-rails', '~> 5.0'
@@ -15,11 +15,13 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bootstrap-sass', '~> 3.3.6'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
-
+gem 'open_uri_redirections'
+gem 'kickstarter', :git => 'https://github.com/tsax/kickstarter.git', :branch => 'project-category'
+# gem 'kickstarter', :path => '/Users/tsax/Development/kickstarter', :branch => 'project-category'
 group :development, :test do
   gem 'sqlite3'
   gem 'rspec-rails', '~> 3.4'
+  gem 'rspec-activemodel-mocks', '1.0.3'
   gem 'capybara', '>=2.2.0'
   gem 'guard-rspec'
   gem 'spork'

@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/tsax/kickstarter.git
+  revision: 6b8bab5dd725027ca2ac635a9a667028ecd20639
+  branch: project-category
+  specs:
+    kickstarter (0.0.3)
+      nokogiri
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -113,6 +121,7 @@ GEM
     notiffany (0.0.8)
       nenv (~> 0.1)
       shellany (~> 0.0)
+    open_uri_redirections (0.2.1)
     pg (0.18.2)
     pry (0.10.3)
       coderay (~> 1.1.0)
@@ -159,6 +168,10 @@ GEM
       rspec-core (~> 3.4.0)
       rspec-expectations (~> 3.4.0)
       rspec-mocks (~> 3.4.0)
+    rspec-activemodel-mocks (1.0.3)
+      activemodel (>= 3.0)
+      activesupport (>= 3.0)
+      rspec-mocks (>= 2.99, < 4.0)
     rspec-core (3.4.1)
       rspec-support (~> 3.4.0)
     rspec-expectations (3.4.0)
@@ -228,9 +241,12 @@ DEPENDENCIES
   guard-rspec
   jbuilder (~> 2.0)
   jquery-rails
+  kickstarter!
+  open_uri_redirections
   pg (= 0.18.2)
   rails (= 4.2.5)
   rails_12factor
+  rspec-activemodel-mocks (= 1.0.3)
   rspec-rails (~> 3.4)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
