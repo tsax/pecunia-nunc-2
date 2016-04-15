@@ -10,5 +10,17 @@ RSpec.describe SubscriberMailer, type: :mailer do
     it 'renders the subject' do
       expect(mail.subject).to eq('Whatevah!')
     end
+
+    it 'renders the receiver email' do
+      expect(mail.to).to eq([subscriber.email])
+    end
+
+    it 'renders the sender email' do
+      expect(mail.from).to eq(["pecunia-nunc@tusharsaxena.com"])
+    end
+
+    it 'assigns @name' do
+      expect(mail.body.encoded).to include(subscriber.name)
+    end
   end
 end
