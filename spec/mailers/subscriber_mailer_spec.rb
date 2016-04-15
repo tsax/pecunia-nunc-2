@@ -1,7 +1,6 @@
 require "rails_helper"
 
 RSpec.describe SubscriberMailer, type: :mailer do
-  # pending "add some examples to (or delete) #{__FILE__}"
 
   describe 'send daily listing' do
     let(:user) { mock_model Subscriber, name: 'Tushar', email: 'tsaxena86@gmail.com', allcategories: true }
@@ -9,7 +8,7 @@ RSpec.describe SubscriberMailer, type: :mailer do
     let(:mail) { SubscriberMailer.daily_listing(user, projects) }
   
     it 'renders the subject' do
-      expect(mail.subject).to eql('Whatevah!')
+      expect(mail.subject).to eq('Whatevah!')
     end
   end
 end

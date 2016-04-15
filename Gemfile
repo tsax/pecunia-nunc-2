@@ -24,7 +24,8 @@ group :development, :test do
   gem 'rspec-activemodel-mocks', '1.0.3'
   gem 'capybara', '>=2.2.0'
   gem 'guard-rspec'
-  gem 'spork'
+  gem 'spork-rails'
+  gem 'guard-spork'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 end
