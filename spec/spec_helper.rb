@@ -1,5 +1,7 @@
 require 'rubygems'
 require 'spork'
+require 'vcr'
+require 'webmock/rspec'
 #uncomment the following line to use spork with the debugger
 #require 'spork/ext/ruby-debug'
 
@@ -138,4 +140,13 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 =end
+end
+
+
+VCR.configure do |c|
+  c.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
+  c.hook_into :webmock
+  c.allow_http_connections_when_no_cassette = true
+  c.configure_rspec_metadata!
+  c.default_cassette_options = { record: :new_episodes, re_record_interval: (3600 * 24) }
 end
