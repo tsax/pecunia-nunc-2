@@ -33,9 +33,12 @@ group :development, :test do
   gem 'guard-spork'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'turn', require: false
+end
+
+group :test do
   gem 'vcr'
   gem 'webmock'
-  gem 'turn', require: false
 end
 
 group :development do

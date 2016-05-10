@@ -1,20 +1,5 @@
 class UserToProjectsMapper
 
-  def everything
-    users = get_users
-
-    users.each { |u| send_listing_to_user(u) }
-  end
-  
-  def send_listing_to_user user
-    projects_for_user = get_category_matched_projects_for_user(user)
-    # SubscriberMailer.send_daily_listing(user, projects_for_user)
-  end
-
-  def get_users
-    Subscriber.all
-  end
-
   def get_projects
     ProjectRetriever.get_all_unfunded_projects_ending_soon
   end
@@ -26,11 +11,7 @@ class UserToProjectsMapper
   end 
 
   def project_in_users_category? categories, project
-    if categories.include? 'All'
-      return true 
-    else 
-      categories.include?(project.category)
-    end
+    categories.include? 'All' || categories.include?(project.category)
   end
 
   def user_categories user
