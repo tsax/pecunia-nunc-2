@@ -1,12 +1,7 @@
 class UserToProjectsMapper
 
-  def get_projects
-    ProjectRetriever.get_all_unfunded_projects_ending_soon
-  end
-
-  def get_category_matched_projects_for_user user
+  def get_category_matched_projects_for_user user, projects
     categories = user_categories(user)
-    projects = get_projects
     if categories.include? 'All'
       return projects
     else
@@ -14,8 +9,14 @@ class UserToProjectsMapper
     end
   end 
 
+  private
+
   def project_in_users_category? categories, project
-    categories.include?(project.category.split('/').first)
+    categories.include?(project_category_primary(project))
+  end
+
+  def project_category_primary project
+    project.category.split('/').first
   end
 
   def user_categories user
