@@ -60,6 +60,6 @@ class SubscribersController < ApplicationController
   end
 
   def account_not_found
-    "Sorry, your account could not be found"
+    "Sorry, your account could not be found, Please contact pecunia-nunc@tusharsaxena.com"
   end
 end

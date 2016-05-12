@@ -1,6 +1,6 @@
 class UserToProjectsMapper
 
-  def get_category_matched_projects_for_user user, projects
+  def self.get_category_matched_projects_for_user user, projects
     categories = user_categories(user)
     if categories.include? 'All'
       return projects
@@ -11,15 +11,15 @@ class UserToProjectsMapper
 
   private
 
-  def project_in_users_category? categories, project
+  def self.project_in_users_category? categories, project
     categories.include?(project_category_primary(project))
   end
 
-  def project_category_primary project
+  def self.project_category_primary project
     project.category.split('/').first
   end
 
-  def user_categories user
+  def self.user_categories user
     categories = []
     if user.allcategories ; categories << 'All' ; return categories end
     if user.art ; categories << 'Art' end
