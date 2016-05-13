@@ -5,7 +5,7 @@ class SubscribersController < ApplicationController
 
   def create
     @subscriber = Subscriber.new(user_params)
-    @subscriber.token = Digest::SHA1.hexdigest([Time.now, rand].join)
+    @subscriber.token = generate_new_token
     if @subscriber.save
       send_user_confirmation(@subscriber)
       flash[:success] = confirmation_reminder
@@ -56,6 +56,10 @@ class SubscribersController < ApplicationController
     SubscriberMailer.email_confirmation(subscriber).deliver_now
   end
 
+  def generate_new_token
+    Digest::SHA1.hexdigest([Time.now, rand].join)
+  end
+  
   def subscribe_form_error
     "There were errors! Please resubmit after making corrections"
   end
