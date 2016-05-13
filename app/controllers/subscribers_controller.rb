@@ -5,6 +5,7 @@ class SubscribersController < ApplicationController
 
   def create
     @subscriber = Subscriber.new(user_params)
+    @subscriber.token = Digest::SHA1.hexdigest([Time.now, rand].join)
     if @subscriber.save
       send_user_confirmation(@subscriber)
       flash[:success] = confirmation_reminder
