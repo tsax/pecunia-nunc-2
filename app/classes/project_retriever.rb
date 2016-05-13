@@ -2,10 +2,9 @@ require 'kickstarter'
 
 class ProjectRetriever
   def self.get_all_unfunded_projects_ending_soon
-    projects = get_all_live_projects_between_75_and_100_percent_funded.select do |pr|
-      ending_soon(pr) && above_pledge_threshold(pr)
+    get_all_live_projects_between_75_and_100_percent_funded.select do |pr|
+      ending_soon?(pr) && above_pledge_threshold?(pr)
     end 
-    projects
   end
 
   def self.get_all_live_projects_between_75_and_100_percent_funded
@@ -14,11 +13,11 @@ class ProjectRetriever
 
   private
 
-  def self.ending_soon project
+  def self.ending_soon? project
     project.pledge_deadline.strftime("%F") < three_days_ahead.strftime("%F")
   end
 
-  def self.above_pledge_threshold project
+  def self.above_pledge_threshold? project
     project.pledge_percent > pledge_threshold
   end
 
