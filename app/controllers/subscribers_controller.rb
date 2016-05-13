@@ -7,9 +7,9 @@ class SubscribersController < ApplicationController
     @subscriber = Subscriber.new(user_params)
     if @subscriber.save
       send_user_confirmation(@subscriber)
-      flash[:success] = "Thanks for signing up! Please confirm your email address by confirming the email sent to your inbox shortly!"
+      flash[:success] = confirmation_reminder
     else
-      flash[:notice] = "There were errors! Please resubmit after making corrections"
+      flash[:notice] = subscribe_form_error
     end
   end
 
@@ -18,7 +18,7 @@ class SubscribersController < ApplicationController
     unless @subscriber.nil?
       @subscriber.active = true
       if @subscriber.save
-        @message = "Thanks! Your e-mail address has been confirmed!"
+        @message = email_confirmed_message
       else
         @message = error_message
       end
@@ -32,7 +32,7 @@ class SubscribersController < ApplicationController
     unless @subscriber.nil?
       @subscriber.active = false
       if @subscriber.save
-        @message = "Sorry to see you go! You've been unsubscribed" 
+        @message = unsusbcribe_message 
       else
         @message = error_message
       end
@@ -53,6 +53,22 @@ class SubscribersController < ApplicationController
 
   def send_user_confirmation(subscriber)
     SubscriberMailer.email_confirmation(subscriber).deliver_now
+  end
+
+  def subscribe_form_error
+    "There were errors! Please resubmit after making corrections"
+  end
+
+  def confirmation_reminder
+    "Thanks for signing up! Please confirm your email address by confirming the email sent to your inbox shortly!"
+  end
+
+  def email_confirmed_message
+    "Thanks! Your e-mail address has been confirmed!"
+  end
+  
+  def unsusbcribe_message
+    "Sorry to see you go! You've been unsubscribed"
   end
 
   def error_message
