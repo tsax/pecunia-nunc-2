@@ -42,6 +42,15 @@ class SubscribersController < ApplicationController
     end
   end
   
+  def change_preferences
+    @subscriber = Subscriber.find_by_token(params[:token])
+    @existing_categories = get_existing_categories(@subscriber).select { |c| c[:subscribed] }
+  end
+
+  def update
+    @subscriber = Subscriber.find_by_token(params[:token])
+    @subscriber.update!(user_params)
+  end
 
   private 
 
@@ -58,6 +67,14 @@ class SubscribersController < ApplicationController
 
   def generate_new_token
     Digest::SHA1.hexdigest([Time.now, rand].join)
+  end
+  
+  def get_existing_categories(subscriber)
+    subscriber.attributes.select { |a,v| non_category_attributes.exclude?(a) }.map { |a,v| {name: a, subscribed: v} }
+  end
+  
+  def non_category_attributes
+    ['id', 'name', 'email', 'created_at', 'updated_at', 'token', 'active', 'last_email']
   end
   
   def subscribe_form_error

@@ -43,4 +43,22 @@ RSpec.feature "Home page visit", type: :feature do
     end
 
   end
+
+  describe "Subscriber can change his category preferences" do
+    before(:all) do
+      @subscriber = Subscriber.new(name: "dummy_categories", email: "dd@dummy.com", allcategories: true)
+      @subscriber.token = Digest::SHA1.hexdigest([Time.now, rand].join)
+      @subscriber.save
+    end
+
+    scenario "User clicks the 'change categories' link" do
+      visit "/subscribers/change_preferences?token=#{@subscriber.token}"
+      expect(page).to have_text "Select your categories"
+    end
+
+    scenario "User changes categories in the form" do
+      visit "/subscribers/change_preferences?token=#{@subscriber.token}"
+      page.check "All Categories"
+    end
+  end
 end

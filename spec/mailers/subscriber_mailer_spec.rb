@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe SubscriberMailer, type: :mailer do
 
   describe 'send daily listing', vcr: true do
-    let(:subscriber) { mock_model Subscriber, name: 'Tushar', email: 'tsaxena86@gmail.com', allcategories: true }
+    let(:subscriber) { mock_model Subscriber, name: 'Tushar', email: 'tsaxena86@gmail.com', allcategories: true , token: '123456' }
     let(:all_projects) { VCR.use_cassette("projects") { ProjectRetriever.get_all_unfunded_projects_ending_soon } }
     let(:projects) { UserToProjectsMapper.get_category_matched_projects_for_user(subscriber, all_projects) }
     let(:mail) { SubscriberMailer.daily_listing(subscriber, projects) }

@@ -3,7 +3,7 @@ class SubscriberMailer < ApplicationMailer
   if Rails.env.production?
     @@request = "http://pecunia-nunc.herokuapp.com"
   else
-    @@request = "http://localhost:1080"
+    @@request = "http://localhost:3000"
   end
   add_template_helper(ApplicationHelper)
 
@@ -16,6 +16,7 @@ class SubscriberMailer < ApplicationMailer
     @projects = projects
     @subscriber = subscriber
     @unsubscribe_url = "#{@@request}/unsubscribe?token=#{@subscriber.token}"
+    @change_preferences_url = "#{@@request}/subscribers/change_preferences?token=#{@subscriber.token}"
     mail to: @subscriber.email, subject: "Kickstarter Projects that Need Your Help Today!"
   end
 end
