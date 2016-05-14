@@ -59,6 +59,7 @@ RSpec.feature "Home page visit", type: :feature do
     scenario "User changes categories in the form" do
       visit "/subscribers/change_preferences?token=#{@subscriber.token}"
       page.check "All Categories"
+      # PENDING, finish this.
     end
   end
 end
