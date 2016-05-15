@@ -1,7 +1,7 @@
 class SubscriberMailer < ApplicationMailer
   default from: "Pecunia Nunc <pecunia-nunc@tusharsaxena.com>"
   if Rails.env.production?
-    @@request = "http://pecunia-nunc.herokuapp.com"
+    @@request = "http://pn2.herokuapp.com"
   else
     @@request = "http://localhost:3000"
   end
