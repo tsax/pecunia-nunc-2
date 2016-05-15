@@ -23,6 +23,10 @@ RSpec.feature "Home page visit", type: :feature do
     scenario "a confirmation email should be sent" do
       expect(ActionMailer::Base.deliveries.count).to eq(1)
     end
+
+    after(:all) do
+      Subscriber.find_by_email("dummy@dummy.com").delete
+    end
   end
 
   describe "Subscribing and unsubscribing" do
@@ -42,15 +46,6 @@ RSpec.feature "Home page visit", type: :feature do
       expect(page).to have_text "Sorry to see you go! You've been unsubscribed"
     end
 
-  end
-
-  describe "Subscriber can change his category preferences" do
-    before(:all) do
-      @subscriber = Subscriber.new(name: "dummy_categories", email: "dd@dummy.com", allcategories: true)
-      @subscriber.token = Digest::SHA1.hexdigest([Time.now, rand].join)
-      @subscriber.save
-    end
-
     scenario "User clicks the 'change categories' link" do
       visit "/subscribers/change_preferences?token=#{@subscriber.token}"
       expect(page).to have_text "Select your categories"
@@ -60,6 +55,10 @@ RSpec.feature "Home page visit", type: :feature do
       visit "/subscribers/change_preferences?token=#{@subscriber.token}"
       page.check "All Categories"
       # PENDING, finish this.
+    end
+    
+    after(:all) do
+      Subscriber.find_by_email("dd@dummy.com").delete
     end
   end
 end

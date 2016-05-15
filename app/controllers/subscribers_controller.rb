@@ -11,6 +11,7 @@ class SubscribersController < ApplicationController
       flash[:success] = confirmation_reminder
     else
       flash[:notice] = subscribe_form_error
+      render 'index'
     end
   end
 

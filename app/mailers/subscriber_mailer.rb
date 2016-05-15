@@ -9,6 +9,7 @@ class SubscriberMailer < ApplicationMailer
 
   def email_confirmation(subscriber)
     @subscriber = subscriber 
+    @confirmation_url = "#{@@request}/subscribers/confirm?token=#{@subscriber.token}"
     mail to: @subscriber.email, subject: "Pecunia Nunc"
   end
 

@@ -16,3 +16,6 @@
 !/log/.keep
 /tmp
 .env
+
+# Ignore VCR cassettes
+/spec/vcr_cassettes
