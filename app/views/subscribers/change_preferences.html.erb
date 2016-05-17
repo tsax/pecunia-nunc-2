@@ -56,13 +56,11 @@
         </div>
 
       <div id="signup">
-      	<p> These are the categories you are currently subscribed to, Your form submission will override them </p>
+      	<p> These are the categories you are currently subscribed to, Your form submission will override them. If you wish to unsubscribe, click the unsubscribe link from your digest email. </p>
       	<% @existing_categories.each do |c| %>
       		[<%= c[:name] %> ]
       	<% end %>
         <%= bootstrap_form_for @subscriber do |f| %>
-          <%= f.text_field :name, icon: "user", placeholder: 'Name', class: 'input-large' %>
-          <%= f.text_field :email, icon: "envelope", placeholder: 'Email', class: 'input-large' %>
           <div class="checkboxes">
           <%= f.check_box :allcategories, label: 'All Categories' %>
           <%= f.check_box :art %>
