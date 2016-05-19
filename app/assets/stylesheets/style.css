@@ -116,7 +116,7 @@ a:focus {
 
 /* FORM CONFIGURATION */
 
-input {
+.input-large {
 	font-size: 16px;
 	min-height: 40px;
 	border-radius: 25px;
@@ -132,7 +132,7 @@ input {
 }
 
 .subscribe-input {
-	float: left;
+	/*float: left;*/
 	width: 65%;
 	text-align: left;
 	margin-right: 2px;

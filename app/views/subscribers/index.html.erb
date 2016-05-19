@@ -30,11 +30,48 @@
           <div class="col-md-8 col-md-offset-2 centered">
             <h1>Welcome to our new app site.<br/>Sign up now & prepare to enjoy our service.</h1>
             <div class="mtb">
-              <form role="form" action="/subscribers/create" method="post" enctype="plain"><br>
+<!--               <form role="form" action="/subscribers/create" method="post" enctype="plain"><br>
                 <input type="text" name="firstname" placeholder="Name"><br>
                 <input type="email" name="email" class="subscribe-input" placeholder="Enter your e-mail address..." required>
                 <button class='btn btn-conf btn-green' type="submit">Subscribe!</button>
-              </form>
+              </form> -->
+              <!-- <div id="mtb"> -->
+                <%= bootstrap_form_for @subscriber do |f| %>
+                  <%= f.text_field :name, placeholder: 'Name', class: 'input-large' %>
+                  <br />
+                  <%= f.text_field :email, placeholder: 'Email', class: 'input-large subscribe-input' %>
+                  <br />
+                  <%= f.submit "Subscribe!", class: 'btn btn-conf btn-green'%>
+                  <br />
+                  <div class="checkboxes">
+                  <%= f.check_box :allcategories, label: 'All Categories' %>
+                  <%= f.check_box :art %>
+                  <%= f.check_box :comics %>
+                  <%= f.check_box :crafts %>
+                  </div>
+                  <div class="checkboxes">
+                  <%= f.check_box :dance %>
+                  <%= f.check_box :design %>
+                  <%= f.check_box :fashion %>
+                  <%= f.check_box :filmvideo, label: 'Film & Video'%>
+                  </div>
+                  <div class="checkboxes">
+                  <%= f.check_box :food %>
+                  <%= f.check_box :games %>
+                  <%= f.check_box :journalism %>
+                  <%= f.check_box :music %>
+                  </div>
+                  <div class="checkboxes">
+                  <%= f.check_box :photography %>
+                  <%= f.check_box :publishing %>
+                  <%= f.check_box :technology %>
+                  <%= f.check_box :theater %>
+                  </div>
+                <% end %>
+                <% 10.times do |i| %>
+                <br />
+                <% end %>
+              <!-- </div> -->
             </div><!--/mt-->
             <h6>30 DAY FREE TRIAL - NO CREDIT CARD NEEDED.</h6>
           </div>
