@@ -8,7 +8,6 @@ class SubscribersController < ApplicationController
     @subscriber.token = generate_new_token
     if @subscriber.save
       send_user_confirmation(@subscriber)
-      flash[:success] = confirmation_reminder
     else
       flash[:notice] = subscribe_form_error
       render 'index'

@@ -138,6 +138,22 @@ a:focus {
 	margin-right: 2px;
 }
 
+.has-error .help-block {
+	color: white;
+	/*font-size: 2px;*/
+	background-color: #a0989d;
+}
+
+.checkboxes {
+    width: 12em;
+    float: left;
+    text-align: left;
+}
+
+#first_checkbox {
+	margin-left: 40px;
+}
+
 @media screen and (max-width: 767px) {
 	.subscribe-input {
 		width: 100%;
@@ -156,7 +172,7 @@ a:focus {
 .btn-conf {
 	border-radius: 50px;
 	margin-right: 15px;
-	font-size: 11px;
+	font-size: 15px;
 	letter-spacing: 1px;
 	text-transform: uppercase;
 	padding: 18px 28px 17px 28px;
@@ -175,6 +191,11 @@ a:focus {
 .btn-green {
 	background: #03C9A9;
 	color: white
+}
+
+.field_with_errors {
+	color: white;
+	background-color: black;
 }
 
 /* HEADER SECTION */

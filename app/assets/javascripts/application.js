@@ -16,3 +16,11 @@
 //= require bootstrap-sprockets
 //= require ie10-viewport-bug-workaround
 //= require_tree .
+
+// The logic: If all categories is checked, uncheck everything else
+// If anything other than all categories is checked, uncheck allcategories
+$(document).on('change', 'input[checkbox]:checked', function() {
+	if (this.checked) {
+		console.log(this + "checked");
+	}
+});
