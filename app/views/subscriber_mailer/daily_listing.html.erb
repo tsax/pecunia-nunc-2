@@ -79,25 +79,34 @@
 </head>
 <body>
   <h1>Good Morning, <%= subscriber_name_titleized(@subscriber) %>!</h1>
-
-  <% @projects.each do |project| %>
-    <div class="project">
-      <p class="title">
-        <a href=<%= project.url %>><%= project.name %></a>
-      </p> 
-      <p class="owner">by <%= project.owner %></p>
-      <a href="<%= project.url %>"><img src="<%= project.thumbnail_url %>" alt="[project image here; enable images to see]" title="<%= project.description %>"/></a>
-      <div id="progressbar">
-        <div style="width: <%= progress_bar_pledge_percent(project) %>%"><%= project.pledge_percent%>%
+  <% if @projects.nil? || @projects.count == 0 %>
+    <h2>Sorry <%= subscriber_name_titleized(@subscriber) %>, there are no projects in your subscribed categories:<br/>
+    <ul>
+    <% UserToProjectsMapper.user_categories(@subscriber).each do |category| %>
+      <li><%= category %></li>
+    <% end %> 
+    </ul>
+    <h3>To change category preferences, please <a href=<%=@change_preferences_url%>>click here.</a></h3>
+  <% else %>
+    <% @projects.each do |project| %>
+      <div class="project">
+        <p class="title">
+          <a href=<%= project.url %>><%= project.name %></a>
+        </p> 
+        <p class="owner">by <%= project.owner %></p>
+        <a href="<%= project.url %>"><img src="<%= project.thumbnail_url %>" alt="[project image here; enable images to see]" title="<%= project.description %>"/></a>
+        <div id="progressbar">
+          <div style="width: <%= progress_bar_pledge_percent(project) %>%"><%= project.pledge_percent%>%
+          </div>
         </div>
+        <p class="category"><a href="<%= primary_category_url(project)%>"><%= project.category %></a></p>
+        <p class="date"><%= project.pledge_deadline %></p>
       </div>
-      <p class="category"><a href="<%= primary_category_url(project)%>"><%= project.category %></a></p>
-      <p class="date"><%= project.pledge_deadline %></p>
-    </div>
+    <% end %>
+    <h5>To change category preferences, please <a href=<%=@change_preferences_url%>>click here.</a></h5>
   <% end %>
   <h4>- The Pecunia Nunc Team</h4>
-  <h6>All feedback is welcome. Just reply to this email!</h6>
-  <h6>To unsubscribe, please <a href=<%=@unsubscribe_url%>>click here.</a>
-  <h6>To change category preferences (and name, email), please <a href=<%=@change_preferences_url%>>click here.</a>
+  <h5>All feedback is welcome. Just reply to this email!</h5>
+  <h5>To unsubscribe, please <a href=<%=@unsubscribe_url%>>click here.</a></h5>
 </body>
 </html>
