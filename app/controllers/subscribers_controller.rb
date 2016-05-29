@@ -4,13 +4,18 @@ class SubscribersController < ApplicationController
   end
 
   def create
-    @subscriber = Subscriber.new(user_params)
-    @subscriber.token = generate_new_token
-    if @subscriber.save
-      send_user_confirmation(@subscriber)
+    @subscriber = Subscriber.find_by_token(params[:email])
+    if @subscriber.nil?
+      @subscriber = Subscriber.new(user_params)
+      @subscriber.token = generate_new_token
+      if @subscriber.save
+        send_user_confirmation(@subscriber)
+      else
+        flash[:notice] = subscribe_form_error
+        render 'index'
+      end
     else
-      flash[:notice] = subscribe_form_error
-      render 'index'
+      send_user_confirmation(@subscriber)
     end
   end
 

@@ -32,7 +32,7 @@
                 <% @existing_categories.each do |c| %>
                   [<%= c[:name] %> ]
                 <% end %>
-            <h3>Your selection below will override your existing preferences (when you click 'Change Preferences') </h3>
+            <h3>Select your categories to override your existing preferences (when you click 'Change Preferences') </h3>
             <div class="mtb">
 
                 <%= bootstrap_form_for @subscriber do |f| %>
