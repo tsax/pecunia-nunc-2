@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   # root 'welcome#index'
   root 'subscribers#index'
   get 'subscribers/confirm' => 'subscribers#confirm'
-  get 'subscribers/unsubscribe' => 'subscribers#unsubscribe'
+  get '/unsubscribe' => 'subscribers#unsubscribe'
   get 'subscribers/change_preferences' => 'subscribers#change_preferences'
   resources :subscribers
   # Example of regular route:

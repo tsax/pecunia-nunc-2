@@ -1,20 +1,17 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
+    <meta name="description" content="Daily email with Kickstarter projects which have reached 80% ending soon">
     <meta name="author" content="Tushar Saxena">
-    <link rel="icon" href="../../favicon.ico">
+    <link rel="icon" href="favicon.ico">
 
-    <title>Pecunia Nunc</title>
+    <title>Pecunia Nunc 2.0:</title>
 
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -23,75 +20,65 @@
 
   <body>
 
-    <div class="site-wrapper">
-
-      <div class="site-wrapper-inner">
-
-        <div class="cover-container">
-
-          <div class="masthead clearfix">
-            <div class="inner">
-              <h3 class="masthead-brand">Pecunia Nunc 2.0</h3>
-              <nav>
-                <ul class="nav masthead-nav">
-                  <li class="active"><a href="#">Home</a></li>
-                  <li><a href="#">Contact</a></li>
-                </ul>
-              </nav>
-            </div>
-          </div>
-
-          <div class="inner cover" id="intro">
-            <p class="lead">Category Preferences Selection : Select your categories. You can also change your name and email address.</p>
-
-          </div>
-
-          <div class="mastfoot">
-            <div class="inner">
-              <p>A side project, by <a href="https://twitter.com/tushar_saxena">@tushar_saxena</a>.</p>
-              <p>Disclaimer: This website has NO AFFLIATION WHATSOEVER with Kickstarter and is NOT ENDORSED by the Kickstarter team. Functionality is not guaranteed.</p>
-            </div>
-          </div>
-
-        </div>
-
-      <div id="signup">
-      	<p> These are the categories you are currently subscribed to, Your form submission will override them. If you wish to unsubscribe, click the unsubscribe link from your digest email. </p>
-      	<% @existing_categories.each do |c| %>
-      		[<%= c[:name] %> ]
-      	<% end %>
-        <%= bootstrap_form_for @subscriber do |f| %>
-          <div class="checkboxes">
-          <%= f.check_box :allcategories, label: 'All Categories' %>
-          <%= f.check_box :art %>
-          <%= f.check_box :comics %>
-          <%= f.check_box :crafts %>
-          </div>
-          <div class="checkboxes">
-          <%= f.check_box :dance %>
-          <%= f.check_box :design %>
-          <%= f.check_box :fashion %>
-          <%= f.check_box :filmvideo, label: 'Film & Video'%>
-          </div>
-          <div class="checkboxes">
-          <%= f.check_box :food %>
-          <%= f.check_box :games %>
-          <%= f.check_box :journalism %>
-          <%= f.check_box :music %>
-          </div>
-          <div class="checkboxes">
-          <%= f.check_box :photography %>
-          <%= f.check_box :publishing %>
-          <%= f.check_box :technology %>
-          <%= f.check_box :theater %>
-          </div>
-          <%= f.submit "Subscribe!", class: 'btn btn-large'%>
-       	<% end %>
-        <% 10.times do |i| %>
-        <br />
-        <% end %>
+    <div id="h">
+      <div class="logo">PECUNIA NUNC 2.0</div>
+      <div class="social hidden-xs">
+        <a href="#contact">Contact</a>
       </div>
-    </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2 centered">
+            <h3>You are currently subscribed to receive projects with these categories: </h3>
+                <% @existing_categories.each do |c| %>
+                  [<%= c[:name] %> ]
+                <% end %>
+            <h3>Your selection below will override your existing preferences (when you click 'Change Preferences') </h3>
+            <div class="mtb">
 
+                <%= bootstrap_form_for @subscriber do |f| %>
+                  <div class="checkboxes">
+                  <%= f.check_box :allcategories, label: 'All Categories' %>
+                  <%= f.check_box :art %>
+                  <%= f.check_box :comics %>
+                  <%= f.check_box :crafts %>
+                  </div>
+                  <div class="checkboxes">
+                  <%= f.check_box :dance %>
+                  <%= f.check_box :design %>
+                  <%= f.check_box :fashion %>
+                  <%= f.check_box :filmvideo, label: 'Film & Video'%>
+                  </div>
+                  <div class="checkboxes">
+                  <%= f.check_box :food %>
+                  <%= f.check_box :games %>
+                  <%= f.check_box :journalism %>
+                  <%= f.check_box :music %>
+                  </div>
+                  <div class="checkboxes">
+                  <%= f.check_box :photography %>
+                  <%= f.check_box :publishing %>
+                  <%= f.check_box :technology %>
+                  <%= f.check_box :theater %>
+                  </div>
+                  <%= f.submit "Change Preferences", class: 'btn btn-conf btn-green'%>
+                <% end %>
+              <br />
+              <!-- </div> -->
+            </div><!--/mt-->
+          </div>
+        </div><!--/row-->
+      </div><!--/container-->
+    </div><!-- /H -->
+
+    <div id="f">
+      <div class="container" id="contact">
+        <div class="row centered">
+          <h2>You Can Contact Us</h2>
+          <h5>pecunia-nunc at tusharsaxena (dot) com</h5>
+          <h5 class="mt">Disclaimer: This website has NO AFFLIATION WHATSOEVER with Kickstarter and is NOT ENDORSED by the Kickstarter team. Functionality is not guaranteed. This is a personal side project</h6>
+          <h5 class="mt">COPYRIGHT 2016 - PECUNIA NUNC</h6>
+        </div><!--/row-->
+      </div><!--/container-->
+    </div><!--/F-->
   </body>
 </html>
