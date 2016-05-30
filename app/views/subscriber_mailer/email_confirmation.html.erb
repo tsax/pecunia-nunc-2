@@ -1,3 +1,25 @@
-Thanks for subscribing!
-Please click the link below to confirm your email address.
-<a href="<%=@confirmation_url%>">CONFIRM EMAIL ADDRESS</a>
+<head>
+	<style text="text/css">
+		
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: 'Lucida Grande';
+    }
+
+	</style>
+</head>
+<body>
+	<h1>Dear <%= subscriber_name_titleized(@subscriber) %>,</h1>
+	<h3>Thanks for subscribing to Pecunia Nunc!</h3>
+	<h3>Please click the link below to confirm your email address. Once you do, you shall start receiving your emails with Kickstarter projects close to completion and in need of your help</h3>
+	<h3><a href="<%=@confirmation_url%>"><b>CONFIRM EMAIL ADDRESS</b></a></h3>
+	<br/>
+	<br/>
+	<br/>
+	<h4>- The Pecunia Nunc Team</h4>
+  <h5>All feedback is welcome. Just reply to this email!</h5>
+</body>

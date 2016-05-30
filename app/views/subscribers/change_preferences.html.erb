@@ -28,11 +28,11 @@
       <div class="container">
         <div class="row">
           <div class="col-md-8 col-md-offset-2 centered">
-            <h3>You are currently subscribed to receive projects with these categories: </h3>
+            <h2>You are currently subscribed to receive projects with these categories: </h3>
                 <% @existing_categories.each do |c| %>
                   [<%= c[:name] %> ]
                 <% end %>
-            <h3>Select your categories to override your existing preferences (when you click 'Change Preferences') </h3>
+            <h2>Select your categories to override your existing preferences (when you click 'Change Preferences') </h3>
             <div class="mtb">
 
                 <%= bootstrap_form_for @subscriber do |f| %>
