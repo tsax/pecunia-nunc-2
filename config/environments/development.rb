@@ -22,6 +22,14 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = { 
     :address => "localhost", :port => 1025 
   }
+  #   config.action_mailer.smtp_settings = {
+  #   address: "smtp.sendgrid.net",
+  #   port: 587,
+  #   authentication: "plain",
+  #   enable_starttls_auto: true,
+  #   user_name: ENV["SENDGRID_USERNAME"],
+  #   password: ENV["SENDGRID_PASSWORD"]
+  # }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log

@@ -26,8 +26,7 @@
 
     .progress {
       position: absolute;
-      /*top: -20px;*/
-      bottom: 0;
+      top: 0;
       left: 0;
       width: 100%;
       z-index: 100;
@@ -40,7 +39,7 @@
       background: rgb(0, 0, 0);
       /* fallback color */
       background: rgba(0, 255, 0, 0.7);
-      padding: 10px;
+      padding: 5px;
     }
 
     .title {
@@ -129,7 +128,7 @@
         <br />
         <p class="date"><%= hours_left(project.pledge_deadline) %> hours left</p>
         <br/>
-        <p class="description">Junior Magazine is a photographic journal showcasing young talent in Irish documentary photography.</p>
+        <p class="description"><%= project.description %></p>
       </div>
     <% end %>
     <h5>To change category preferences, please <a href=<%=@change_preferences_url%>>click here.</a></h5>
