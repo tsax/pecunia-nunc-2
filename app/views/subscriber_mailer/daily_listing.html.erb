@@ -19,7 +19,7 @@
     img {
       margin: 7px 0px 0px 10px;
     }
-
+/*
     .container {
       position: relative;
     }
@@ -41,7 +41,26 @@
       background: rgba(0, 255, 0, 0.7);
       padding: 5px;
     }
+    */
 
+    .td-container {
+      background-size: cover;
+    }
+    .td-container a {
+       display:block;
+       width:100%;
+    }
+    .td-container div h2 span { 
+      color: white;
+      font: bold 16px/45px Helvetica, Sans-Serif;
+      letter-spacing: -1px;
+      background: rgb(0, 0, 0);
+      /* fallback color */
+      background: rgba(0, 255, 0, 0.7);
+      padding: 10px;
+    }
+
+    
     .title {
       font-family: 'Lucida Grande';
       font-weight: bold;
@@ -119,11 +138,15 @@
           <a href=<%= project.url %>><%= project.name %></a>
         </p> 
         <p class="owner">by <%= project.owner %></p>
-        <div class="container">
-          <a href="<%= project.url %>"><img src="<%= project.thumbnail_url %>" alt="[project image here; enable images to see]"
-          title="<%= project.description %>"/></a>
-          <h2 class="progress"><span><%= project.pledge_percent%>%</span></h2>
-        </div>
+        <table>
+          <tr>
+            <td class="td-container" background="<%= project.thumbnail_url %>" width="215" height="120" valign="top">
+              <div>
+                <h2><span><%= project.pledge_percent%>%</span></h2>
+              </div>
+            </td>
+          </tr>
+        </table>
         <p class="category"><a href="<%= primary_category_url(project)%>"><%= project.category %></a></p>
         <br />
         <p class="date"><%= hours_left(project.pledge_deadline) %> hours left</p>
